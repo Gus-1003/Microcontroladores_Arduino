@@ -1,3 +1,5 @@
+// Link da simulação:https://www.tinkercad.com/things/3X49yzek8fk
+// Autoria: Gustavo Maciel
 #include <Servo.h>
 Servo maquina;  // criar o objeto servo motor de entrada
 
