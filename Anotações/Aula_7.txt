@@ -1,0 +1,36 @@
++ Sensor LDR (Light Dependent Resistor - Fotoresistor)
+	* Conhecido como interruptores crepusculares ou Mini fotocélula (Referencia as fontes de enegia solar);
+	* Funcionamento: A sua resistência eletrica varia de acordo com a luminosidade;
+		- Alta iluminação -> Resistência baixa = menos tensão na corrente -> 0;
+		- Baixa iluminação -> Resistência alta = maior tensão na corrente -> 1023;
+	* Aplicações:
+		- Postes de rua;
+		- Controle de estufa (Sendo a luminosidade uma das váriaveis ambientais da estufa);
+		- Controle de flashes;
+		- Movimento de controle de plascas voltaicas;
+		- controle de brilho (celular);
+	* Sistema prático:
+		- Link: https://www.tinkercad.com/things/2zan0xEeRzx
+
+		const byte led = 10;
+		const byte ldr = A5;
+		int estado = 0;
+
+		void setup() {
+			Serial.begin(9600);
+			pinMode(led, OUTPUT);
+		}
+
+		void loop() {
+			estado = analogRead(ldr);
+			Serial.println(estado);
+			if (estado > 800) {
+				digitalWrite(led, HIGH);
+			} else {
+				digitalWrite(led, LOW);
+			}
+		}
+
+	* Dimmer + LDR
+		- Controla a potência de mecanismos conectados ao LDR;
+			# Ou seja: LED´s irão acender de maneira proporcional a ausência de luz;
