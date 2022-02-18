@@ -1,0 +1,58 @@
++ Leitura Serial (Técnica para printar textos no console)
+	* Chamada ao sistema -> Printando conteudo no console;
+	* Problema de funcionamento do botão (Bouncing);
+		- Geralmente ocorrendo por causa de processos mecanicos;
+			# Técnicas para combater esse defeito (debouncing);
+      
++ Potenciômetro
+	* Resistência variável (de 0 ao máximo);
+	* Vantegns:
+		- Substituir um resistor (que perde energia em forma de calor);
+		- Dar ao usuario a possibilidade de controlar a potência do sistema;
+	* Dsvatagens: 
+		- Uso manual (Pode ser combatido por meio da automação da atividade);
+	* Sistema Prático:
+		Link: https://www.tinkercad.com/things/ksi3vpRatGu
+		
+		const byte pot = A0; // Ao usar um pino analógico inserimos um A antes da númeração do pino;
+		const byte led = 11;
+
+		int sensorValue = 0; // leitura do potenciômetro
+		byte outputValue = 0; // leitura da saida PWM (analógica)
+
+		void setup() {
+   			pinMode(led, OUTPUT);
+    			// inicializa a comunicação serial
+    			Serial.begin(9600);
+		}
+
+		loop() {
+    			// faz a leitura da entrada analógica
+    			sensorValue = analogRead(pot);
+    			// mapeia o resultado da entrada analógica dentro do intervalo de 0 a 255
+    			outputValue = map(sensorValue, 0, 1023, 0, 255);
+    			// escreve o valor de saída (“analógico”)
+    			analogWrite(led, outputValue);
+    			// imprime o resultado no monitor serial:
+    			Serial.print("sensor = " );
+    			Serial.print(sensorValue);
+    			Serial.print("\t output = ");
+    			Serial.println(outputValue);
+    			// Aguarda 2 milissegundos antes do próximo loop:
+    			delay(2);
+		}
+	
++ PWM (Pulse Width Modulation)
+	* Objetivo: Obter resultados analógicos por meios digitais;
+	* Método: Variação do tempo em que o estado permane ligado ou desligado;
+		- Tempo ligado = largura do pulso / ciclo de trabalho / Duty Cycle;
+		- A medição do tempo é médida em porcentagem de periodo de atividade (Valor médio);
+		- Uso da função "analogWrite";
+			# Ela mede a potencial em uma faixa de 0 até 255;
+				1. analogWrite (0)   = 0% Duty Cycle
+				2. analogWrite (64)  = 25% Duty Cycle
+				3. analogWrite (127) = 50% Duty Cycle
+				4. analogWrite (191) = 75% Duty Cycle
+				5. analogWrite (255) = 100% Duty Cycle
+		- "PARA USAR A FUNÇÃO PMW É OBRIGAGATORIO O USO DE PINOS QUE POSSUAM UM (~) NA FRENTE;
+	* Circuio divisor de tensão;	
