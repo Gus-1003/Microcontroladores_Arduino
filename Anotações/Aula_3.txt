@@ -1,0 +1,57 @@
++ Resistores Pull-Down e Pull-Up
+	* Estados lógicos:
+		- Circuitos lógicos projetados para emitir 2 estdados;
+			# 0 = Desligado = Nível Baixo = Tensão próxima à 0V;
+			# 1 = Ligado = Nível Alto = Tensão próxima à tensão de alimentação;
+		- Interruptores:
+			# Aberto = Corrente nula = 0 tensão;
+			# Fechado = Existe corrente = Há medida de tensão;
+		
+		OBS: Quando o sensor detectar 1 o ideal é que o sistema esteja recebendo perto da tensão máxima;
+			# Caso isso não ocorra podemos chamar isso de ruído elétrico;
+				1. Como evitar: Uso de resistores Pull-down e Pull-Up;
+			# Ao não ser tratado o ruido a placa ao decorrer do tempo pode acabar sendo danificada;
+
+	* Resistor Pull-Down
+		- Corrente -> Chave (botão) -> Pino -> GND;
+		- O resistor fica no caminho do GND;
+		- A chave fica ao lado da alimentação;
+		- O LED recebe naturalmente 0 até o dispositivo ser acionado;	
+	
+	* Resistor Pull-Up
+		- Corrente -> Pino -> Chave (botão) -> GND;
+		- O resistor fica no caminho da alimentação;
+		- A chave fica ao lado do GND;
+		- O LED recebe naturalmente 1 até o dispositivo ser acionado;
+	
+	* Sistema prático (Arduino - Aula 3 - PullDown_PullUp):
+		Link: https://www.tinkercad.com/things/f1pCvfIn5Fl
+
+		const byte pulldown = 2;
+		const byte pullup = 4;
+		const byte leddown = 10;
+		const byte ledup = 11;
+
+		void setup(){
+  			// Entradas de ação:
+  			pinMode(pulldown, INPUT);
+  			pinMode(pullup, INPUT);
+  			// Saidas do Evento:
+  			pinMode(leddown, OUTPUT);
+  			pinMode(ledup, OUTPUT);
+		}
+
+
+		void loop(){
+  			if (digitalRead(pulldown) == 1){
+        			digitalWrite(leddown, HIGH);
+    			} else {
+    				digitalWrite(leddown, LOW);
+    			}
+  
+  			if (digitalRead(pullup) == 0){
+        			digitalWrite(ledup, HIGH);
+    			} else {
+    				digitalWrite(ledup, LOW);
+    			}
+		}
