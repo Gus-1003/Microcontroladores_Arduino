@@ -1,0 +1,158 @@
++ Programação com Arduino:
+	* Lembretes:
+		- Sempre dar atenção ao tamanho dos tipos de váriaveis. Tipos maiores = maior uso de mémoria;
+			# Define (constante) = Consome menos mémoria por projetar o valor só em tempo de execução;
+			# Void = 0 bits;
+			# Bool = 2 bits = 1 byte;
+			# byte = 8 bits = 1 byte;
+			# int  = 16 bits = 2 bytes;
+			# float = 32 bits = 4 bytes;
+
+	* Componentes básicos da programação em arduino:
+		- Placa Arduino;
+		- Componentes eletronicos:
+			# Resistores;
+				1. Com LED´S = 330 "OHM´S"
+				2. Com Botões = 10000 "OHM´S"
+			# Barramento;
+			# LED´s;
+			# Potenciômetros;
+			# Sensores;
+		- IDE (Ambiente de desenvolvimento) = Link: https://www.arduino.cc/en/software;
+		- Computador;
+	
+	* Problemas comuns na programção de microcontroladores:
+		- A placa (Ligações erradas ou inexistentes);
+		- A porta (Declaração incorreta da porta ou uso do pino errado);
+
+	* Sketches (Programas / Software para Arduino):
+		- Extensão do Arquivo = ".ino";
+		- Local aonde se armazena esse software = "Sketchbook"; 
+
+	* Bibliotecas Arduino:
+		- Fornecem informações extras para Sketches;
+			# Facilitam acesso a novos sensores;
+			# Atalhos ou facilidades na manipulação dos dados;
+		- No ambiente de desenvolvimento já existe algumas instaladas mas pode-se instalar outras;
+		- Há também a possibilidade da criação de bibliotecas;
+
+	* Funções Principais:
+		- Setup ():
+			# Incialização das variáveis e os modos dos pinos;
+			# É executada uma única vez;
+		- Loop():
+			# Bloco executado enquanto o Arduino tiver energia;
+			# Controle contínuo do ambiente;
+	* Operadores:
+		- Lógicos:
+			# E - and - (&&);
+			# ou - OR - (||);
+			# Não - Not - (!);
+
+		- Comparacionais:
+			# Igualdade (==);
+			# Desigualdade (!=);
+			# menor que (<);
+			# maior que (>);
+			# menor ou igual (<=);
+			# maior ou igual (>=);
+
+		- Aritméticos:
+			# Soma (+);
+			# Subtração (-);
+			# Multiplicação (*);
+			# Divisão (/);
+			# Resto (%);
+			# Atribuição (=);
+	* Comandos:
+		- if / else
+			if (input < 500){
+				// fazer ação 1
+			}
+			else // caso contrário, isto é input >= 500{
+				// fazer ação 2
+			}
+
+		- Switch / case
+			switch (var) {
+				case 1:
+					//realiza ação caso var == 1
+				case 2:
+					//realiza ação caso var == 2
+				default:
+					// caso nenhum case seja executado, será executado o default
+					// default é opcional
+				}
+		- For 
+			for (inicialização; condição; incremento){
+				//Bloco de instruções
+			}
+
+		- While 
+			var = 0;
+			while(var < 200){
+				//código que se repete 200 vezes
+				var++;
+			}
+
+		- Do .... While
+			do {
+				// bloco de intruções
+			} while (condição);
+	
+	* Funções Digitais:
+		- pinMode (pin,mode): Configuração do pino (Entrada / saída);
+		- digitalRead (pin): Lê os valores em um pino digital especifico (HIGH ou LOW);		
+		- digitalWrite (pin,valor): Escreve um valor no pino em especifico;
+	
+	* Funções Analógicas:
+		- analogRead (pin): Lê os valores em um pino analogico especifico (HIGH ou LOW);	
+		- analogWrite (pin,valor):Escreve um valor no pino analogico especifico;
+
++ Prática com sistemas (Arduino - Aula2 - Botão):
+		Link da simulação: https://www.tinkercad.com/things/eiZDyHDErpU
+
+		const byte botao = 2;
+		const byte led = 4;
+		boolean estadoBotao;
+
+		void setup() {
+			pinMode(botao, INPUT);
+			pinMode(led, OUTPUT);
+		}
+
+		void loop() {
+  			estadoBotao = digitalRead(botao);
+  			switch(estadoBotao) {
+      				case HIGH: 
+          				digitalWrite(led,HIGH);
+      				break;
+      				case LOW: 
+          				digitalWrite(led,LOW);
+      				break;
+			}
+		}
+
++ Prática com sistemas (Arduino - Aula2 - 2Botão e 1led):
+		Link da simulação: https://www.tinkercad.com/things/5tqAXTTMsnE
+
+		const byte botao = 2;
+		const byte led = 4;
+		boolean estadoBotao;
+
+		void setup() {
+			pinMode(botao, INPUT);
+			pinMode(led, OUTPUT);
+		}
+
+		void loop() {
+  			estadoBotao = digitalRead(botao);
+  			switch(estadoBotao) {
+      				case HIGH: 
+          				digitalWrite(led,HIGH);
+      				break;
+      				case LOW: 
+          				digitalWrite(led,LOW);
+      				break;
+			}
+		}
