@@ -1,0 +1,61 @@
++ Interrupção:
+	* Permite que sensores respondam a eventos;
+	
+	* Vantagens:
+		- Automatiza as atividdes;
+		- Dá segunrança contra eventualidades previziveis;
+	
+	* Método:
+		- Interromper a rotina do loop e realizar a função de interrupção;
+	
+	* Quantidade de Pinos possiveis de interrupção:
+		- Uno: 2 pinos;
+		- Leonardo: 4 pinos;
+		- Mega2560: 6 pinos;
+		- Due: todos os pinos;
+
+	* Modos de Interrupção:
+		- LOW      -> Nível baixo dispara;
+		- RISING   -> Transição de (Baixo -> Alto);
+		- FALLING  -> Transição de (Alto -> Baixo);
+		- CHANGE   -> Transição em qualquer sentido;	 
+		- HIGH     -> Nível alto dispara;
+
+	* Regras de Interrupção:
+		- Deve ser o mais rápido e curto possivel;
+		- Não recebem, nem retornam nada;
+			# Solução: Variáveis Voláteis;
+		- O CPU não pode realizar nenhuma ação enquanto a rotina não terminar;
+			# Nem que essa ação seja outra interrupção;
+		- Possiveis problemas:
+			# As funções delay e milis usam temporizadores e interrupção (Podem não funcionar corretamente);
+				1. Solução: Usar a função delayMicroseconds;
+			# A função "Comunicação Serial" também faz uso de interrupção (Pode não funcionar corretamente);
+
+	* Variáveis Voláteis:
+		- Função para passar dados entre as ISR (Interrupt Service Routine) e o resto do sistema;
+		- Visto como uma boa prática de programação;
+			# Ajuda ao leitor da documetação do sistema a entender que determinada váriaval faz parte de uma ISR;
+	
+	* Habilitar e Desabilitar as interrupções:
+		- Geralmente utilizadas em parte criticas do código;
+		- Permite o código ser realizado sem correr o risco de ser interrompido;
+		- Funções:
+			# nointerrupts() = A partir daqui o código não seve ser interrompido;
+			# interrupts() = A partir daqui o código pode ser interrompido;
+
++ Temporizador:
+	* Realizar interrupções a partir de determinados periodos de tempo;
+	* Timer do arduino UNO:
+		-Timer 0 -> Responsavel pelas funções:
+			# Delay;
+			# Millis;
+			# Micros;
+			OBS: É RECOMENDADO NÃO USAR O "Timer 0" GRAÇAS AO SEU GRANDE NÚMERO DE USOS OBRIGATORIOS;
+		
+		- Timer 1 -> Responsavel pelas funções:
+			# Tempo de ação do ServoMotor; 
+			
+		- Timer 2 -> Responsavel pelas funções:
+			# Tone -> Conseguir ondas em frequências diferentes;
+	* Biblioteca TimerOne;
