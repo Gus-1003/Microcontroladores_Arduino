@@ -1,0 +1,101 @@
++ Apresentação da Disciplina:
+	* Aplicações:
+		- Automação (Controle P&D);
+		- Robótica;
+		- Monitoramento e controle;
+		- Internet das coisas (IoT);
+
+	* Componentes da disciplina:
+		- Plataforma de prototipação: Arduino;
+		- Sensores:
+			# Temperatura;
+			# Umidade;
+			# Pressão;
+			# Som;
+			# Distância;
+			# Objetos;
+			# Gases;
+			# Luminosidade;			
+			# Aceleração;
+			# Carga;
+			# Posição;
+			# Chuva;
+		- Funcionalides do sistema:
+			# Bluetooth;
+			# Ethernet;
+			# Wi-fi;
+			# Zigbee;
+		- Componentes agregados:
+			# USB host;
+			# sd card;
+			# gps;
+
+	* Ferramenta mais utilizada para prototipagem e simulação:
+		- Tinkercard = https://www.tinkercad.com/
+--------------------------------------------------------------------------------------
++ Introdução ao arduino e seus componentes:
+
+	* Open Source Hardware:
+		- A informação sobre o hardware é disponibilizado ao público;
+		- Não necessariamente é de graça;
+		- Visa a modificação para um uso especifico da placa;
+		
+	* Fundamentos do Arduino:	
+		- Muito aplicado na coleta de dados a partir dos seus pinos (possibilidade de grande uso de sensores);
+		- Da a possibilidade de fazer produtos finais aplicados e baratos;
+			#  A partir da extração do microcontrolador da placa e inserção de uma placa de circuito impresso;
+		- Linguagem: Arduino <- Baseado na linguagem Wiring (Muito similar a C/C++);
+		- IDE: Arduino <- Baseado em Processing;
+
+	* Microcontrolador:
+		- Circuito integrado programável;
+		- Possui três unidade funcionais principais:	
+			#  Unidade central de processamento;
+			#  Memória;
+			#  Interfaces de entrada e saída (Pinagem);
+		- Possui dois tipos de Memória Volátil:
+			#  Memória de leitura e escrita (Armazenar Dados);
+			#  Memória somente de leitura (Armazenar Programas);
+		- Mémoria permanente: 
+			#  EEPROM (Electrically-Erasable Programmable Read-Only Memory)
+		- Conversores analógico -> Digital e em alguns casos Digital -> analógico;
+		- Vantagens:
+			#  Redução de recursos necessarios (Espaço; custo; consumo de energia);
+			#  Facilidade no projeto de aplicação;
+			#  Alternativa eficiente;
+
+	* Historico:
+		- Inicio do projeto arduino: 2005;
+		- Objetivo: Oferecer controle de projetos de modo mais economico;
+		- Local: Ivrea / Itália;
+		- Referencia: Arduino era o nome do bar em que os desenvolvedores iam após os estudos;
+		
+	* Componentes (Arduino UNO R3):
+		- Botão de reset;
+		- Conector USB para cabo AB;
+		- Atmega comunicador (liga a entrada dos dados ao microcontrolador central);
+		- Microcontrolador -> Responsavel pelo armazenamento e processamento do sistema;
+		- Porta ICSP (Substituto do conector USB) -> Permite fazer a gravação do programa;
+		- Cristal de quartzo -> Responsavel pelo clock;
+		- Regulador de voltagem;
+		- Conector fêmea -> -> Te permite a usar uma fonte externa (Geralmente uma bateria 9v);
+		- Pinos de entrada e saída digitais e (Nos pinos com um "~" do lado) possuindo a função PWM (Modulação com largura e pulso);
+			#  PWM é a forma como podemos coverter um sinal digital (0 e 1) em Analogico; 
+		- Pinos de voltagem e terra;
+		- LED verde (placa ligada / desligada);
+		- LED laranja conectado ao pin13 (led de teste);
+		- LED´s TX e RX (Demonstra o tráfico de entrada e saída dos dados);
+
++ Prática com sistemas (Arduino - Aula1 - Blick):
+	Link da simulação: https://www.tinkercad.com/things/22mCf2iEIV4
+
+	#define led 2
+	void setup() {
+		pinMode(led, OUTPUT);
+	}
+	void loop() {
+		digitalWrite(led, HIGH);
+		delay(1000);
+		digitalWrite(led, LOW);
+		delay(1000);
+	}
